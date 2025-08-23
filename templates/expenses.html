@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3 class="mb-3">Despesas</h3>
+<form method="post" class="row g-2 mb-3">
+  <div class="col-md-6"><input name="description" class="form-control" placeholder="Descrição" required></div>
+  <div class="col-md-3"><input name="amount" type="number" step="0.01" class="form-control" placeholder="Valor (R$)" required></div>
+  <div class="col-md-3 d-grid"><button class="btn btn-primary">Lançar</button></div>
+</form>
+<div class="card">
+  <div class="card-body p-0">
+    <table class="table mb-0">
+      <thead><tr><th>Descrição</th><th>Valor</th><th>Data</th><th></th></tr></thead>
+      <tbody>
+        {% for e in expenses %}
+        <tr>
+          <td>{{ e.description }}</td>
+          <td>{{ e.amount|fmt }}</td>
+          <td>{{ e.created_at|dt }}</td>
+          <td class="text-end"><a class="btn btn-sm btn-outline-danger" href="{{ url_for('delete_expense', eid=e.id) }}">Excluir</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

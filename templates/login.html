@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>Entrar</h3>
+<form method="post" class="w-50">
+  <input type="email" name="email" class="form-control mb-2" placeholder="E-mail" required>
+  <input type="password" name="password" class="form-control mb-3" placeholder="Senha" required>
+  <button class="btn btn-primary">Entrar</button>
+  <a href="{{ url_for('register') }}" class="btn btn-link">Cadastrar</a>
+</form>
+{% endblock %}

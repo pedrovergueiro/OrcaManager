@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h3>Clientes</h3>
+</div>
+<form method="post" class="row g-2 mb-4">
+  <div class="col-md-4"><input name="name" class="form-control" placeholder="Nome" required></div>
+  <div class="col-md-3"><input name="phone" class="form-control" placeholder="Telefone"></div>
+  <div class="col-md-3"><input name="email" type="email" class="form-control" placeholder="E-mail"></div>
+  <div class="col-md-2 d-grid"><button class="btn btn-primary">Adicionar</button></div>
+</form>
+<div class="card">
+  <div class="card-body p-0">
+    <table class="table mb-0">
+      <thead><tr><th>Nome</th><th>Telefone</th><th>Email</th><th>Criado</th><th></th></tr></thead>
+      <tbody>
+        {% for c in customers %}
+        <tr>
+          <td>{{ c.name }}</td>
+          <td>{{ c.phone }}</td>
+          <td>{{ c.email }}</td>
+          <td>{{ c.created_at|dt }}</td>
+          <td class="text-end"><a class="btn btn-sm btn-outline-danger" href="{{ url_for('delete_customer', cid=c.id) }}">Excluir</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

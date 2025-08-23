@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3 class="mb-3">Painel</h3>
+<div class="row g-3 mb-4">
+  <div class="col-md-3">
+    <div class="card"><div class="card-body">
+      <div class="h6">Faturamento (hoje)</div>
+      <div class="h4">{{ daily_revenue|fmt }}</div>
+    </div></div>
+  </div>
+  <div class="col-md-3">
+    <div class="card"><div class="card-body">
+      <div class="h6">Faturamento (mês)</div>
+      <div class="h4">{{ monthly_revenue|fmt }}</div>
+    </div></div>
+  </div>
+  <div class="col-md-3">
+    <div class="card"><div class="card-body">
+      <div class="h6">Despesas (mês)</div>
+      <div class="h4">{{ monthly_expenses|fmt }}</div>
+    </div></div>
+  </div>
+  <div class="col-md-3">
+    <div class="card"><div class="card-body">
+      <div class="h6">Lucro aprox. (mês)</div>
+      <div class="h4">{{ approx_profit|fmt }}</div>
+    </div></div>
+  </div>
+</div>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h5>Top produtos do mês</h5>
+  <a href="{{ url_for('report_pdf') }}" class="btn btn-outline-primary">📄 Gerar Relatório PDF</a>
+</div>
+<div class="card">
+  <div class="card-body">
+    {% if top_products %}
+    <ul class="list-group">
+      {% for name, qty in top_products %}
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        {{ name }}
+        <span class="badge bg-primary rounded-pill">{{ qty }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+      <p class="text-muted mb-0">Sem vendas ainda.</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

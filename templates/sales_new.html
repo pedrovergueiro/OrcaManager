@@ -1,0 +1,72 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<h3 class="mb-3">Nova Venda</h3>
+<form method="post" class="row g-2 mb-3">
+  <input type="hidden" name="action" value="add_item">
+  <div class="col-md-4">
+    <select name="product_id" class="form-select" required>
+      <option value="">-- Produto --</option>
+      {% for p in products %}
+      <option value="{{ p.id }}">{{ p.name }} — {{ p.sale_price|fmt }} (Estoque: {{ p.stock }})</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="col-md-2"><input name="quantity" type="number" min="1" value="1" class="form-control" required></div>
+  <div class="col-md-2 d-grid"><button class="btn btn-outline-primary">Adicionar item</button></div>
+  <div class="col-md-2 d-grid">
+    <a href="{{ url_for('sales_new') }}" onclick="event.preventDefault(); document.getElementById('clear-cart-form').submit();" class="btn btn-outline-secondary">Limpar carrinho</a>
+  </div>
+</form>
+
+<form id="clear-cart-form" method="post" style="display:none;">
+  <input type="hidden" name="action" value="clear_cart">
+</form>
+
+<div class="card mb-3">
+  <div class="card-body p-0">
+    <table class="table mb-0">
+      <thead><tr><th>Produto</th><th>Qtd</th><th>Preço unit.</th><th>Total</th></tr></thead>
+      <tbody>
+        {% for i in cart %}
+        <tr>
+          <td>{{ i.name }}</td>
+          <td>{{ i.qty }}</td>
+          <td>R$ {{ i.unit_price|float|round(2) }}</td>
+          <td>R$ {{ (i.unit_price * i.qty)|float|round(2) }}</td>
+        </tr>
+        {% endfor %}
+        {% if not cart %}
+        <tr><td colspan="4" class="text-center text-muted">Carrinho vazio.</td></tr>
+        {% endif %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<form method="post" class="row g-2">
+  <input type="hidden" name="action" value="finalize">
+  <div class="col-md-4">
+    <select name="customer_id" class="form-select">
+      <option value="">-- Cliente (opcional) --</option>
+      {% for c in customers %}
+      <option value="{{ c.id }}">{{ c.name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="col-md-3">
+    <select name="payment_method" class="form-select">
+      <option>dinheiro</option>
+      <option>pix</option>
+      <option>cartão</option>
+      <option>boleto</option>
+    </select>
+  </div>
+  <div class="col-md-3 align-self-center">
+    <strong>Total: R$ {{ cart_total|float|round(2) }}</strong>
+  </div>
+  <div class="col-md-2 d-grid">
+    <button class="btn btn-success" {% if not cart %}disabled{% endif %}>Finalizar venda</button>
+  </div>
+</form>
+{% endblock %}

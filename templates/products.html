@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h3>Produtos</h3>
+</div>
+<form method="post" class="row g-2 mb-4">
+  <div class="col-md-3"><input name="name" class="form-control" placeholder="Nome do produto" required></div>
+  <div class="col-md-2"><input name="sku" class="form-control" placeholder="SKU/Código"></div>
+  <div class="col-md-2"><input name="cost_price" class="form-control" placeholder="Preço de custo (R$)" type="number" step="0.01"></div>
+  <div class="col-md-2"><input name="sale_price" class="form-control" placeholder="Preço de venda (R$)" type="number" step="0.01" required></div>
+  <div class="col-md-1"><input name="stock" class="form-control" placeholder="Estoque" type="number" step="1" value="0"></div>
+  <div class="col-md-2 d-grid"><button class="btn btn-primary">Adicionar</button></div>
+</form>
+<div class="card">
+  <div class="card-body p-0">
+    <table class="table mb-0">
+      <thead><tr><th>Nome</th><th>SKU</th><th>Preço custo</th><th>Preço venda</th><th>Estoque</th><th>Criado</th><th></th></tr></thead>
+      <tbody>
+        {% for p in products %}
+        <tr>
+          <td>{{ p.name }}</td>
+          <td>{{ p.sku }}</td>
+          <td>{{ p.cost_price|fmt }}</td>
+          <td>{{ p.sale_price|fmt }}</td>
+          <td>{{ p.stock }}</td>
+          <td>{{ p.created_at|dt }}</td>
+          <td class="text-end"><a class="btn btn-sm btn-outline-danger" href="{{ url_for('delete_product', pid=p.id) }}">Excluir</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

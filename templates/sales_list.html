@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3 class="mb-3">Vendas</h3>
+<div class="card">
+  <div class="card-body p-0">
+    <table class="table mb-0">
+      <thead><tr><th>#</th><th>Cliente</th><th>Pagamento</th><th>Total</th><th>Data</th></tr></thead>
+      <tbody>
+        {% for s in sales %}
+        <tr>
+          <td>{{ s.id }}</td>
+          <td>{{ s.customer.name if s.customer else '—' }}</td>
+          <td>{{ s.payment_method }}</td>
+          <td>{{ s.total|fmt }}</td>
+          <td>{{ s.created_at|dt }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+
+
+
