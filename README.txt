@@ -1,8 +1,7 @@
-# 🎉 OrçaFácil Pro v5 🚀
+# 🎉 OrçaFácil Pro v2 🚀
 
 Bem-vindo ao **OrçaFácil Pro v5**, o app que vai transformar a forma de gerenciar suas vendas e despesas! 💸💼  
 
-![GIF Animado](https://media.giphy.com/media/3o6Zt481isNVuQI1l6/giphy.gif)
 
 ---
 
@@ -17,20 +16,9 @@ Bem-vindo ao **OrçaFácil Pro v5**, o app que vai transformar a forma de gerenc
 - **Cancele** vendas com erro ❌  
 - **Apague** vendas caso não queira registrar 🗑️  
 
-➡️ **Dashboard com Gráficos de Pizza** 📊🍕  
-- Visualize suas vendas de forma clara e divertida.  
-- Gráficos dinâmicos mostram a proporção de cada venda.
-
 ➡️ **Relatórios em PDF** 📝  
 - Gere relatórios completos com gráfico incluso.  
 - Salve ou compartilhe com sua equipe facilmente.  
-
-➡️ **Envio de Email para Clientes** 📧✨  
-- Configure e envie um email para todos os clientes de uma vez.  
-- Perfeito para promoções ou avisos importantes.  
-
-➡️ **Página 404 divertida** 🚫  
-- Mesmo que você erre a URL, a página 404 te recebe com estilo 😎  
 
 ---
 
@@ -75,22 +63,11 @@ orcafacil_pro_v5/
 │   ├─ dashboard.html
 │   ├─ add_expense.html
 │   ├─ report.html
-│   └─ 404.html
+│  
 ├─ static/               🎨 Arquivos CSS, imagens e gráficos
 │   ├─ login_style.css
 │   └─ chart.png
 ```
-
----
-
-## 🚀 Como Usar o App
-
-1️⃣ Faça login ou registre-se. 🟢  
-2️⃣ Adicione suas vendas pelo Dashboard. 💰  
-3️⃣ Visualize gráficos de pizza 🍕📊.  
-4️⃣ Gere PDFs com relatório completo 📝.  
-5️⃣ Cancele ou apague vendas ❌🗑️.  
-6️⃣ Envie emails para todos os clientes 📧.  
 
 ---
 
