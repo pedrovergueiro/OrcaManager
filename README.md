@@ -8,7 +8,7 @@ Bem-vindo ao **OrcaManager**, o gerenciador mais incrível para orcas (ou qualqu
 
 O **OrcaManager** foi criado para simplificar a vida de quem precisa de uma solução organizada e eficiente. E claro, com um toque de diversão! Aqui você pode:
 
-- 🐳 Gerenciar suas orcas.
+- 🐳 Gerenciar seus orçamentos.
 - 🌟 Organizar tarefas de forma inteligente.
 - 🚀 Automatizar processos de maneira prática.
 
